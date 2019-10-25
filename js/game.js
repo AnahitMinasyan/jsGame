@@ -46,7 +46,6 @@ const noRotateCards = () => {
         cardOne.classList.remove('invert');
         cardTwo.classList.remove('invert');
 
-        // lockedCard = false;
         resetCards();
     }, 500 )
 }
@@ -54,7 +53,7 @@ const noRotateCards = () => {
 const resetCards = () => {
     
     invertedCard = false;
-        lockedCard = false;
+    lockedCard = false;
     cardOne = false;
      cardTwo = false;
 }
