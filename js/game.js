@@ -1,21 +1,34 @@
+
 const game_cards = document.querySelectorAll('.game-card');
+
 let cardOne, cardTwo ;
+
 let invertedCard = false;
 let lockedCard = false;
 
 
+
 const invertCard = (e) => {
+    
+    
     if (lockedCard) {
         return;
     }
+    
+    
     const target = e.target.parentElement;
 
+    
     if (target === cardOne) {
         return;
     }
+    
+    
     target.classList.add("invert");
 
-     if (!invertedCard) {
+     
+    
+    if (!invertedCard) {
          invertedCard = true;
          cardOne = target;
      }else {
@@ -26,7 +39,13 @@ const invertCard = (e) => {
      }
 }
 
+
+
+
+
+
 const checkForMatch = () => {
+    
     if (cardOne.dataset.id === cardTwo.dataset.id) {
         disableCards();
     }else {
@@ -34,13 +53,24 @@ const checkForMatch = () => {
     }
 }
 
+
+
+
+
+
 const disableCards = () => {
+    
     cardOne.removeEventListener('click', invertCard);
     cardTwo.removeEventListener('click', invertCard);
 
 };
 
+
+
+
+
 const noRotateCards = () => {
+    
     lockedCard = true;
     setTimeout(() => {
         cardOne.classList.remove('invert');
@@ -49,7 +79,12 @@ const noRotateCards = () => {
         // lockedCard = false;
         resetCards();
     }, 500 )
+    
 }
+
+
+
+
 
 const resetCards = () => {
     
@@ -57,12 +92,17 @@ const resetCards = () => {
         lockedCard = false;
     cardOne = false;
      cardTwo = false;
+    
 }
 
 
+
+
 game_cards.forEach(gCard => {
+    
     gCard.addEventListener('click', invertCard);
 
     const random  = Math.floor(Math.random() * game_cards.length);
     gCard.style.order = random;
+    
 });
